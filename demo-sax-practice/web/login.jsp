@@ -15,8 +15,11 @@
     <body>
         <style>
             body{
-                background-color: #EEEEEE;
                 font-family: 'Roboto', sans-serif;
+                background-image: url('https://wallpaperaccess.com/full/203564.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
             }
         </style>
 
