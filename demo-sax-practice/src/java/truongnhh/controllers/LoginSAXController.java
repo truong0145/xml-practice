@@ -6,12 +6,15 @@
 package truongnhh.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import truongnhh.models.Student;
 import truongnhh.sax.StudentHandler;
+import truongnhh.sax.StudentListHandler;
 import truongnhh.utils.XMLUtil;
 
 /**
@@ -38,13 +41,17 @@ public class LoginSAXController extends HttpServlet {
             if (handler.isFound()) {
                 HttpSession session = request.getSession();
                 session.setAttribute("FULLNAME", handler.getFullname());
+                
+                //add
+                StudentListHandler slhandler = new StudentListHandler();
+                XMLUtil.parseFileWithSAX(filePath, slhandler);
+                session.setAttribute("students", slhandler.getStudents());
                 url = SUCCESS;
             } else if (handler.isDropoutStatus()) {
-                request.setAttribute("LOGIN_MESSAGE", "Sorry, your account status is Dropout.");
+                request.setAttribute("LOGIN_MESSAGE", "Dropout account cannot login into system.");
             } else {
                 request.setAttribute("LOGIN_MESSAGE", "Incorrect username or password.");
             }
-            System.out.println(handler.isDropoutStatus());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

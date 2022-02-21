@@ -28,11 +28,11 @@
             <form action="LoginSAXController" method="POST">
                 <div class="mb-3">
                     <label>Username </label>
-                    <input class="form-control" type="text" name="txtUsername"/>
+                    <input class="form-control" type="text" name="txtUsername" value="truong"/>
                 </div>
                 <div class="mb-3">
                     <label>Password </label>
-                    <input class="form-control" type="password" name="txtPassword"/>
+                    <input class="form-control" type="password" name="txtPassword" value="1"/>
                     <label id="err-mess" class="text-danger">${requestScope.LOGIN_MESSAGE}</label>
                 </div>
                 <div>

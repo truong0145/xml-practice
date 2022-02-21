@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        
+
 
         <style>
             body{
@@ -32,6 +33,44 @@
                 <button class="btn btn-primary" type="submit" name="Logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</button>
             </form>
         </div>
+
+
+
+        <c:forEach var="s" items="${sessionScope.students}">
+            <div class="col-10 bg-white border rounded shadow mx-auto my-3 p-3">
+                <div class="row" style="height: 15em;">
+                    <div class="col-3">
+                        <img src="https://kenh14cdn.com/203336854389633024/2021/8/21/13-16295096762751822279755.jpg" alt="Basic avatar" class=" shadow rounded" style="height: 14em;">
+                    </div>
+                    <div class="col-8">
+                        <h3>${s.fullname}</h3>
+                        <h5 class="text-primary">${s.classes}</h5>
+                        <c:choose>
+                            <c:when test="${s.sex == '0'}">
+                                <h5>Male</h5>
+                            </c:when>
+                            <c:otherwise>
+                                <h5>feMale</h5>
+                            </c:otherwise>
+                        </c:choose>
+                        <h5>Address: ${s.address}</h5>
+                        <c:choose>
+                            <c:when test="${s.status == 'studying'}">
+                                <h5 class="text-success">${s.status}</h5>
+                            </c:when>
+                            <c:when test="${s.status == 'break'}">
+                                <h5 class="text-warning">${s.status}</h5>
+                            </c:when>
+                            <c:otherwise>
+                                <h5 class="text-secondary">${s.status}</h5>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
