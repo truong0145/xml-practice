@@ -25,6 +25,7 @@
                 background-attachment: fixed;
                 background-size: cover;
             }
+            
         </style>
 
         <div class="col-10 bg-white border rounded shadow mx-auto my-3 p-3">
@@ -56,13 +57,19 @@
                         <h5>Address: ${s.address}</h5>
                         <c:choose>
                             <c:when test="${s.status == 'studying'}">
-                                <h5 class="text-success">${s.status}</h5>
+                                <label class="px-2 pt-1 rounded bg-success text-white">
+                                    <h5>${s.status}</h5>
+                                </label>
                             </c:when>
                             <c:when test="${s.status == 'break'}">
-                                <h5 class="text-warning">${s.status}</h5>
+                                <label class="px-2 pt-1 rounded bg-warning text-white">
+                                    <h5>${s.status}</h5>
+                                </label>
                             </c:when>
                             <c:otherwise>
-                                <h5 class="text-secondary">${s.status}</h5>
+                                <label class="px-2 pt-1 rounded bg-secondary text-white">
+                                    <h5>${s.status}</h5>
+                                </label>
                             </c:otherwise>
                         </c:choose>
                     </div>
